@@ -553,6 +553,47 @@ textarea.textin { font-size: clamp(15px, 3.8cqmin, 20px); flex: 1; min-height: 6
   #pSet { gap: 6px !important; } #pSet .card { padding: 6px 10px !important; } #pSet .card h3, #pSet .card .lbl { margin: 0 0 3px; }
   #pSet .btn { font-size: 13px; padding: 4px 9px; min-height: 0; } #pSet select { padding: 4px 8px; font-size: 14px; }
 }
+/* ---------- arcade practice ---------- */
+.rdgo { flex: none; display: grid; grid-template-columns: 1fr 1.4fr; gap: 8px; }
+.prchips { flex: none; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.prchips .btn { min-height: 0; padding: 3px 9px; font-size: clamp(13px, 2.2cqh, 20px); }
+.prchips .btn[aria-pressed="true"] { background: var(--sun); color: #23204A; }
+.prstage { flex: 1; min-height: 0; min-width: 0; align-items: center; justify-content: center; gap: 4px; }
+#s-prac .colB { min-width: 0; }
+.prcard { flex: none; height: 1.25em; display: flex; align-items: center; justify-content: center; line-height: 1; white-space: nowrap; max-width: 100%; background: var(--card); border: 3px solid var(--ink); border-radius: 18px; box-shadow: 0 5px 0 var(--ink); padding: 2px 20px; font-size: clamp(26px, min(7cqh, 10.5cqw), 84px); font-weight: 800; text-align: center; }
+.prcard.small { font-size: clamp(14px, min(3.6cqh, 5cqw), 40px); padding: 2px 12px; }
+.prlist.worked .pli { font-size: clamp(10px, min(1.9cqh, 3.2cqw), 20px); }
+.prcard b { color: var(--berry); } .prcard b.hid { color: var(--soft); } .prcard.pop { animation: pop .45s; }
+.prdone { font-size: .7em; }
+.prvis { flex: 1; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; --of: clamp(12px, min(2.8cqh, 4.6cqw), 40px); }
+.prvis .bigtext { font-size: clamp(26px, 6cqh, 70px); } .prvis #prb { --s: clamp(60px, 12cqh, 140px); }
+.prtip { flex: none; font-size: clamp(13px, 2.3cqh, 20px); font-weight: 700; text-align: center; height: 2.6em; margin: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; line-height: 1.25; }
+.prtip.long { height: 3.9em; font-size: clamp(12px, 2.1cqh, 19px); }
+#s-prac .colB { flex: none; height: 30cqh; }
+.prlist { height: 100%; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 3px; overflow: auto; }
+.pli { min-width: 0; text-overflow: ellipsis; border: 2px solid var(--track); background: var(--card); color: var(--ink); border-radius: 10px; font: inherit; font-weight: 800; font-size: clamp(10px, min(2.1cqh, 3.05cqw), 22px); padding: 0 4px; text-align: left; min-height: 0; cursor: pointer; white-space: nowrap; overflow: hidden; }
+.pli b { color: var(--berry); } .pli.past { opacity: .7; } .pli.on { background: var(--sun); color: #23204A; border-color: var(--ink); }
+.prctl { flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; align-items: center; }
+.prbtns .btn, .prspeed .btn { flex: 1; } #prHide { justify-self: stretch; }
+.prctl .btn { min-height: 0; padding: 5px 10px; font-size: clamp(14px, 2.4cqh, 22px); }
+.prbtns, .prspeed { display: flex; gap: 4px; } .prspeed .btn[aria-pressed="true"], #prHide[aria-pressed="true"] { background: var(--sun); color: #23204A; }
+#prPlay { min-width: 3em; background: var(--grape); color: #fff; }
+#prStart { padding: 8px; font-size: clamp(15px, 2.8cqh, 26px); }
+.wstack { display: inline-grid; grid-template-columns: repeat(var(--n), 1fr); font-size: clamp(22px, 5cqh, 60px); font-weight: 800; line-height: 1.1; text-align: center; }
+.wstack .srow { display: contents; } .wstack .srow span { min-width: .9em; }
+.wstack .car span { font-size: .5em; color: var(--berry); align-self: end; } .wstack .ans span { color: var(--good); }
+.wstack .sg { color: var(--berry); } .wstack .chg { color: var(--berry); text-decoration: underline; }
+.wstack .b1 { font-style: normal; font-size: .5em; color: var(--berry); vertical-align: top; margin-right: 1px; }
+.wstack .sline { grid-column: 1 / -1; border-top: 4px solid var(--ink); margin: 2px 0; }
+.ldiv { display: inline-flex; flex-direction: column; font-size: clamp(22px, 5cqh, 60px); font-weight: 800; line-height: 1.15; }
+.ldiv .lq { display: grid; grid-template-columns: repeat(var(--n), 1fr); margin-left: 1.2em; color: var(--good); min-height: 1.15em; }
+.ldiv .lrow { display: flex; } .ldiv .lrow b { width: 1.2em; text-align: center; color: var(--berry); }
+.ldiv .ln { display: grid; grid-template-columns: repeat(var(--n), 1fr); border-top: 4px solid var(--ink); border-left: 4px solid var(--ink); border-top-left-radius: 8px; padding-left: 4px; }
+.ldiv .ln span { min-width: .75em; text-align: center; position: relative; } .ldiv sup { font-size: .45em; color: var(--berry); position: absolute; left: -.1em; top: .1em; }
+@container app (min-width: 760px) and (orientation: landscape) {
+  #s-prac .colB { height: auto; flex: 0 0 38cqw; width: 38cqw; } #s-prac .colA { flex: 1 1 0; } .pli { font-size: clamp(13px, 2.6cqh, 26px); } .prlist.worked .pli { font-size: clamp(12px, 2.2cqh, 22px); }
+  .prctl { grid-template-columns: auto auto auto 1fr; } .prbtns .btn, .prspeed .btn { flex: none; }
+}
 .dressbtn { font-size: clamp(13px, 2.4cqh, 20px); padding: 4px 14px; margin-top: 4px; min-height: 0; }
 /* ---------- studio ---------- */
 #s-studio .colA { flex: none; align-items: center; justify-content: center; gap: 4px; }
@@ -624,6 +665,23 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
       <div class="colA studiopv"><div class="pvstage" id="stBuddy"></div><p class="t-m" id="stName" style="text-align:center"></p>
         <div class="row stbtns"><button class="btn" id="stSuper">🦸 Super me!</button><button class="btn" id="stMix">🎲 Mix it up</button></div></div>
       <div class="colB"><div class="sttabs" id="stTabs"></div><div class="stopts" id="stOpts"></div><p class="t-s" id="stHint" role="status" style="flex:none;min-height:1.2em"></p></div>
+    </div>
+  </section>
+
+  <!-- ARCADE PRACTICE -->
+  <section class="screen" id="s-prac" aria-label="Practice">
+    <div class="topbar"><button class="btn iconbtn" id="prBack" aria-label="Back">◀</button>
+      <div class="lvlhead"><div class="badge" id="prBadge">×</div><div><h2 class="t-m" id="prTitle"></h2><p class="fun" id="prSub"></p></div></div></div>
+    <div class="prchips" id="prChips"></div>
+    <div class="cols">
+      <div class="colA prstage"><div class="prcard" id="prCard" aria-live="polite"></div><div class="prvis" id="prVis"></div><p class="prtip" id="prTip"></p></div>
+      <div class="colB"><div class="prlist" id="prList"></div></div>
+    </div>
+    <div class="prctl">
+      <div class="prbtns"><button class="btn" id="prPrev" aria-label="Back one">⏮</button><button class="btn" id="prPlay" aria-label="Play">▶</button><button class="btn" id="prNext" aria-label="Next">⏭</button></div>
+      <div class="prspeed" id="prSpeed"></div>
+      <button class="btn" id="prHide" aria-pressed="false">🙈 Hide answers</button>
+      <button class="btn go" id="prStart">🎯 Start the test</button>
     </div>
   </section>
 
@@ -770,7 +828,7 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
       <div class="opt"><h3>Nigerian story questions?</h3><div class="seg" id="storySeg"></div></div>
       <div class="opt"><h3>Read questions out loud?</h3><div class="seg" id="voiceSeg"></div></div>
     </div>
-    <button class="btn go" id="startBtn" style="flex:none">Start</button>
+    <div class="rdgo"><button class="btn" id="rdPractice">📖 Practice first</button><button class="btn go" id="startBtn">Start</button></div>
   </section>
 
   <!-- PLAY -->
@@ -4214,6 +4272,229 @@ $("stMix").onclick = () => {
 $("stBack").onclick = () => { sfx.tap(); show(studioFrom || "home"); };
 let studioFrom = "home";
 function openStudio(from) { studioFrom = from || "home"; show("studio"); }
+
+/* ======================= ARCADE PRACTICE ======================= */
+/* what each arcade level practises */
+const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
+const PRAC = {
+  add: [{ k: "addf", fams: range(1, 5), n: 5 }, { k: "addf", fams: range(1, 10), n: 10 }, { k: "bridgeAdd" }, { k: "colAdd" }, { k: "colAdd" }, { k: "colAdd" }, { k: "colAdd" }, { k: "colAdd" }],
+  sub: [{ k: "subf", fams: range(2, 5) }, { k: "subf", fams: range(2, 10) }, { k: "bridgeSub" }, { k: "colSub" }, { k: "colSub" }, { k: "colSub" }, { k: "colSub" }, { k: "colSub" }],
+  mul: [...range(2, 12).map((t) => ({ k: "times", fams: [t], n: 15 })), { k: "times", fams: [2, 5, 10], n: 10 }, { k: "times", fams: range(2, 5), n: 10 },
+    { k: "times", fams: range(2, 10), n: 10 }, { k: "times", fams: range(2, 12), n: 12 }, { k: "times", fams: range(2, 12), n: 15 }],
+  div: [{ k: "share", fams: [2, 5, 10], n: 10 }, { k: "share", fams: range(2, 5), n: 10 }, { k: "share", fams: range(2, 12), n: 12 }, { k: "long" }, { k: "long" }, { k: "long" }],
+};
+const TIMES_TIPS = {
+  2: "Counting in twos. Every answer is an even number.", 3: "Count in threes: 3, 6, 9, 12…", 4: "Double, then double again: 4 × 3 is 6 doubled, which is 12.",
+  5: "Every answer ends in 5 or 0.", 6: "6 times an even number ends in that same digit: 6 × 4 = 24.", 7: "A tricky one! Say it like a song and it will stick.",
+  8: "Double, double, double: 8 × 3 → 6 → 12 → 24.", 9: "Up to 9 × 10, the digits of each answer add up to 9: 9 × 4 = 36, and 3 + 6 = 9.",
+  10: "Just put a 0 on the end: 10 × 7 = 70.", 11: "Up to 11 × 9, the digit repeats: 11 × 4 = 44.", 12: "12 × a number = 10 × it + 2 × it: 12 × 3 = 30 + 6 = 36.",
+};
+const COLS = ["Units", "Tens", "Hundreds", "Thousands", "Ten thousands", "Hundred thousands", "Millions", "Ten millions"];
+
+function famItems(cfg, f) {
+  if (cfg.k === "times") return range(1, cfg.n).map((m) => ({ q: `${f} × ${m}`, a: f * m, say: `${f} times ${m} is ${f * m}`, sq: `${f} times ${m}`, vis: f * m <= 24 && f <= 6 ? V.groups(f, m, "🟠") : "" }));
+  if (cfg.k === "share") return range(1, cfg.n).map((m) => ({ q: `${f * m} ÷ ${f}`, a: m, say: `${f * m} shared by ${f} is ${m}`, sq: `${f * m} shared by ${f}`, vis: f * m <= 24 ? V.groups(f, m, "🍬") : "" }));
+  if (cfg.k === "addf") return range(1, cfg.n).map((m) => ({ q: `${f} + ${m}`, a: f + m, say: `${f} plus ${m} is ${f + m}`, sq: `${f} plus ${m}`, vis: f + m <= 15 ? V.plus("🍊", f, m) : "" }));
+  return range(1, f).map((m) => ({ q: `${f} − ${m}`, a: f - m, say: `${f} take away ${m} is ${f - m}`, sq: `${f} take away ${m}`, vis: V.objs("🍬", f, { cross: m }) }));
+}
+const famTip = (cfg, f) => cfg.k === "times" ? TIMES_TIPS[f] : cfg.k === "share" ? `Sharing is the times table backwards: ${f} × 3 = ${f * 3}, so ${f * 3} ÷ ${f} = 3.`
+  : cfg.k === "addf" ? "Start at the bigger number and count on." : "Start at the big number and count back.";
+
+/* ---------- worked examples, step by step ---------- */
+function stackHTML(top, bot, sign, ans, shown, carries, changed) {
+  const n = Math.max(top.length, bot.length, ans.length), pad = (a) => Array(n - a.length).fill("").concat(a);
+  const T = pad(top), B = pad(bot), A = pad(ans), C = pad(carries || []), CH = pad(changed || []);
+  const row = (cells, cls) => `<div class="srow ${cls}"><span></span>${cells.map((c) => `<span>${c}</span>`).join("")}</div>`;
+  return `<div class="wstack" style="--n:${n + 1}">${row(C.map((c) => c || ""), "car")}${`<div class="srow"><span></span>${T.map((d, i) => `<span class="${CH[i] ? "chg" : ""}">${d}</span>`).join("")}</div>`}
+    <div class="srow"><span class="sg">${sign}</span>${B.map((d) => `<span>${d}</span>`).join("")}</div><div class="sline"></div>
+    ${row(A.map((d, i) => (i >= n - shown ? d : "")), "ans")}</div>`;
+}
+function colAddEx(a, b) {
+  const A = String(a).split("").map(Number), B = String(b).split("").map(Number), s = a + b, S = String(s).split("");
+  const n = Math.max(A.length, B.length), carries = Array(S.length).fill(""), steps = [];
+  steps.push({ t: "Line up the numbers: units under units, tens under tens.", v: stackHTML(String(a).split(""), String(b).split(""), "+", S, 0, carries) });
+  let c = 0;
+  for (let i = 0; i < n; i++) {
+    const da = A[A.length - 1 - i] || 0, db = B[B.length - 1 - i] || 0, t = da + db + c, last = i === n - 1;
+    const txt = `${COLS[i]}: ${da} + ${db}${c ? " + 1 carried" : ""} = ${t}.` + (t >= 10 && !last ? ` Write ${t % 10} and carry 1.` : ` Write ${t}.`);
+    c = t >= 10 ? 1 : 0; if (c && !last) carries[S.length - 2 - i] = "1";
+    steps.push({ t: txt, v: stackHTML(String(a).split(""), String(b).split(""), "+", S, last ? S.length : i + 1, carries.slice()) });
+  }
+  steps.push({ t: `So ${fmt(a)} + ${fmt(b)} = ${fmt(s)}.`, v: stackHTML(String(a).split(""), String(b).split(""), "+", S, S.length, carries) });
+  return { q: `${fmt(a)} + ${fmt(b)}`, a: fmt(s), steps };
+}
+function colSubEx(a, b) {
+  const top = String(a).split("").map(Number), B = String(b).split("").map(Number), n = top.length, d = a - b;
+  const ansD = String(d).padStart(n, " ").split(""), steps = [], changed = Array(n).fill(false);
+  const tb = () => top.map((v) => (v >= 10 ? `<i class="b1">1</i>${v - 10}` : String(v))), bot = String(b).split("");
+  steps.push({ t: "Line up the numbers: units under units. Start with the units.", v: stackHTML(tb(), bot, "−", ansD, 0, [], changed) });
+  for (let i = 0; i < n; i++) {
+    const ti = n - 1 - i, db = B[B.length - 1 - i] || 0; let txt = "";
+    if (top[ti] < db) {
+      let j = ti - 1; while (j >= 0 && top[j] === 0) { top[j] = 9; changed[j] = true; j--; }
+      top[j] -= 1; changed[j] = true; top[ti] += 10; changed[ti] = true;
+      txt = `${COLS[i]}: ${top[ti] - 10} is less than ${db}, so borrow 1 from the next column. Now ${top[ti]} − ${db} = ${top[ti] - db}.`;
+    } else txt = `${COLS[i]}: ${top[ti]} − ${db} = ${top[ti] - db}.`;
+    steps.push({ t: txt, v: stackHTML(tb(), bot, "−", ansD, i + 1, [], changed.slice()) });
+  }
+  steps.push({ t: `So ${fmt(a)} − ${fmt(b)} = ${fmt(d)}.`, v: stackHTML(String(a).split(""), bot, "−", ansD, n, []) });
+  return { q: `${fmt(a)} − ${fmt(b)}`, a: fmt(d), steps };
+}
+function longDivEx(N, d) {
+  const D = String(N).split("").map(Number), Q = String(N / d).padStart(D.length, " ").split(""), steps = [], rems = Array(D.length).fill("");
+  const vis = (k) => `<div class="ldiv" style="--n:${D.length}"><div class="lq">${Q.map((x, i) => `<span>${i < k ? x.trim() : ""}</span>`).join("")}</div>
+    <div class="lrow"><b>${d}</b><div class="ln">${D.map((x, i) => `<span>${rems[i] ? `<sup>${rems[i]}</sup>` : ""}${x}</span>`).join("")}</div></div></div>`;
+  steps.push({ t: `Share ${fmt(N)} by ${d}, one digit at a time, starting from the left.`, v: vis(0) });
+  let rem = 0;
+  for (let i = 0; i < D.length; i++) {
+    const cur = rem * 10 + D[i], q = Math.floor(cur / d); rem = cur % d;
+    const txt = q === 0 && i === 0 ? `${d} into ${cur} won't go, so we look at ${cur} together with the next digit.`
+      : `${d} into ${cur} goes ${q} time${q === 1 ? "" : "s"}` + (rem ? `, with ${rem} left over. Carry the ${rem} to the next digit.` : ".");
+    if (rem && i + 1 < D.length) rems[i + 1] = rem;
+    steps.push({ t: txt, v: vis(i + 1) });
+  }
+  steps.push({ t: `So ${fmt(N)} ÷ ${d} = ${fmt(N / d)}.`, v: vis(D.length) });
+  return { q: `${fmt(N)} ÷ ${d}`, a: fmt(N / d), steps };
+}
+function bridgeAddEx() {
+  const a = r(6, 9), b = r(11 - a, 9), u = 10 - a, rest = b - u;
+  return { q: `${a} + ${b}`, a: a + b, steps: [
+    { t: `${a} + ${b}: let's make 10 first.`, v: V.plus("🟠", a, b) },
+    { t: `Split ${b} into ${u} and ${rest}. ${a} + ${u} = 10.`, v: V.big(`${a} + ${u} = 10`) },
+    { t: `Then add the ${rest} that is left: 10 + ${rest} = ${a + b}.`, v: V.big(`10 + ${rest} = ${a + b}`) },
+    { t: `So ${a} + ${b} = ${a + b}.`, v: V.big(`${a} + ${b} = ${a + b}`) }] };
+}
+function bridgeSubEx() {
+  const a = r(11, 18), b = r(a - 9, 9), u = a - 10, rest = b - u;
+  if (rest <= 0) return bridgeSubEx();
+  return { q: `${a} − ${b}`, a: a - b, steps: [
+    { t: `${a} − ${b}: let's go back to 10 first.`, v: V.objs("🍬", a, { cross: b }) },
+    { t: `Split ${b} into ${u} and ${rest}. ${a} − ${u} = 10.`, v: V.big(`${a} − ${u} = 10`) },
+    { t: `Then take away the ${rest} that is left: 10 − ${rest} = ${a - b}.`, v: V.big(`10 − ${rest} = ${a - b}`) },
+    { t: `So ${a} − ${b} = ${a - b}.`, v: V.big(`${a} − ${b} = ${a - b}`) }] };
+}
+function workedSet(g, lvl, cfg) {
+  const L = LEVELS[g][lvl], out = [], seen = new Set(); let guard = 0;
+  while (out.length < (cfg.k.startsWith("bridge") ? 6 : 5) && guard++ < 200) {
+    let ex;
+    if (cfg.k === "bridgeAdd") ex = bridgeAddEx(); else if (cfg.k === "bridgeSub") ex = bridgeSubEx();
+    else { const [a, b] = L.gen(); ex = cfg.k === "colAdd" ? colAddEx(a, b) : cfg.k === "colSub" ? colSubEx(a, b) : longDivEx(a, b); }
+    if (seen.has(ex.q)) continue; seen.add(ex.q); out.push(ex);
+  }
+  return out;
+}
+
+/* ---------- practice player ---------- */
+let pr = null;
+const PR_SPEEDS = [{ v: 0, e: "🐢", ms: 3800 }, { v: 1, e: "🐰", ms: 2700 }, { v: 2, e: "🐆", ms: 1800 }];
+function openPractice() {
+  const cfg = PRAC[cur.g][cur.lvl], g = OPS[cur.g], worked = !cfg.fams;
+  pr = { cfg, worked, fam: worked ? null : cfg.fams[0], i: 0, step: 0, phase: 0, playing: false, timer: null, speed: pr ? pr.speed : 1, hide: false, done: false };
+  $("prBadge").textContent = g.sym; $("prBadge").style.background = g.color;
+  $("prTitle").textContent = `Practice: ${LEVELS[cur.g][cur.lvl].nm}`;
+  $("prSub").textContent = worked ? "Watch each step, then try the test" : "Listen, say it along, then try the test";
+  buildPracItems(); show("prac"); renderPrac(); pr.auto = setTimeout(() => { if (pr && !pr.playing) prPlay(true); }, 500);
+}
+function buildPracItems() {
+  pr.items = pr.worked ? workedSet(cur.g, cur.lvl, pr.cfg) : famItems(pr.cfg, pr.fam);
+  pr.i = 0; pr.step = 0; pr.phase = 0; pr.done = false;
+  pr.tip = pr.worked ? (pr.cfg.k === "long" ? "Short division: share one digit at a time and carry what is left over." : pr.cfg.k.startsWith("bridge") ? "The make-10 trick makes these quick." : "Always start with the units column on the right.") : famTip(pr.cfg, pr.fam);
+}
+function renderPrac() {
+  const it = pr.items[pr.i], c = pr.cfg;
+  $("prChips").style.display = !pr.worked && c.fams.length > 1 ? "" : "none";
+  if (!pr.worked && c.fams.length > 1) {
+    $("prChips").innerHTML = `<span class="t-s">${c.k === "times" ? "Which table?" : c.k === "share" ? "Share by:" : "Which number?"}</span>` + c.fams.map((f) => `<button class="btn" aria-pressed="${f === pr.fam}" data-f="${f}">${c.k === "times" ? f + "×" : c.k === "share" ? "÷" + f : f}</button>`).join("");
+    $("prChips").querySelectorAll("button").forEach((b) => b.onclick = () => { sfx.tap(); prStop(); pr.fam = +b.dataset.f; buildPracItems(); renderPrac(); prPlay(true); });
+  }
+  if (pr.done) {
+    $("prCard").innerHTML = `<span class="prdone">🎉 Great practising!</span>`;
+    $("prVis").innerHTML = buddyHTML("prb"); $("prTip").textContent = "Ready? Tap 🎯 Start the test, or ▶ to practise again.";
+  } else if (pr.worked) {
+    const st = it.steps[pr.step];
+    $("prCard").innerHTML = `<span>${it.q} = ${pr.step === it.steps.length - 1 ? `<b>${it.a}</b>` : "?"}</span>`;
+    $("prCard").classList.toggle("small", String(it.q).length > 9);
+    $("prVis").innerHTML = st.v; $("prTip").textContent = `Step ${pr.step + 1} of ${it.steps.length}: ${st.t}`; $("prTip").classList.add("long");
+  } else {
+    const showA = !pr.hide || pr.phase === 1;
+    $("prCard").innerHTML = `<span>${it.q} = <b class="${showA ? "" : "hid"}">${showA ? it.a : "?"}</b></span>`; $("prCard").classList.remove("small");
+    $("prVis").innerHTML = it.vis || ""; $("prTip").textContent = pr.hide && pr.phase === 0 ? "🙈 Say the answer out loud before it appears!" : `💡 ${pr.tip}`; $("prTip").classList.remove("long");
+  }
+  const n = pr.items.length, cols = pr.worked ? 1 : wide() ? (n > 8 ? 2 : 1) : n > 10 ? 3 : n > 5 ? 2 : 1;
+  $("prList").classList.toggle("worked", pr.worked);
+  $("prList").style.gridTemplateRows = `repeat(${Math.ceil(n / cols)}, minmax(0, 1fr))`;
+  $("prList").innerHTML = pr.items.map((x, k) => { const known = !pr.hide || k < pr.i || (k === pr.i && (pr.worked ? pr.step === x.steps.length - 1 : pr.phase === 1)) || pr.done;
+    return `<button class="pli ${k === pr.i && !pr.done ? "on" : ""} ${k < pr.i || pr.done ? "past" : ""}" data-k="${k}">${x.q} = <b>${known ? x.a : "?"}</b></button>`; }).join("");
+  $("prList").querySelectorAll(".pli").forEach((b) => b.onclick = () => { sfx.tap(); prStop(); pr.done = false; pr.i = +b.dataset.k; pr.step = 0; pr.phase = 0; renderPrac(); prStep(); });
+  $("prPlay").textContent = pr.playing ? "⏸" : "▶";
+  $("prPlay").setAttribute("aria-label", pr.playing ? "Pause" : "Play");
+  $("prSpeed").innerHTML = PR_SPEEDS.map((s) => `<button class="btn" aria-pressed="${pr.speed === s.v}" data-s="${s.v}">${s.e}</button>`).join("");
+  $("prSpeed").querySelectorAll("button").forEach((b) => b.onclick = () => { sfx.tap(); pr.speed = +b.dataset.s; renderPrac(); });
+  $("prHide").setAttribute("aria-pressed", pr.hide);
+  fitVis();
+  const on = $("prList").querySelector(".pli.on"), Lst = $("prList");
+  if (on) { const a = on.getBoundingClientRect(), b = Lst.getBoundingClientRect(); if (a.top < b.top || a.bottom > b.bottom) Lst.scrollTop += a.top - b.top - 4; }
+}
+/* shrink any picture so it always fits its space, without moving anything else */
+function fitVis() {
+  const box = $("prVis"), v = box.firstElementChild; if (!v) return;
+  v.style.transform = ""; v.style.transformOrigin = "center";
+  const k = Math.min(1, (box.clientHeight - 4) / v.scrollHeight, (box.clientWidth - 4) / v.scrollWidth);
+  if (k < 1) v.style.transform = `scale(${Math.max(.3, k).toFixed(3)})`;
+}
+/* speech-driven timing: each fact is spoken in full, then a short pause, then the next one */
+const PR_PAUSE = [1300, 700, 300], PR_RATE = [.82, .92, 1.04];
+const prClean = (t) => String(t).replace(/−/g, " minus ").replace(/×/g, " times ").replace(/÷/g, " divided by ").replace(/=/g, " equals ");
+function prUtter(text, done, extra = 0) {
+  pr.token = (pr.token || 0) + 1; const tk = pr.token; clearTimeout(pr.guard); clearTimeout(pr.timer);
+  const fin = (wait) => { if (pr.token !== tk) return; pr.token++; clearTimeout(pr.guard); if (done) pr.timer = setTimeout(done, wait + extra); };
+  if (!settings.sound || !("speechSynthesis" in window)) { fin(PR_SPEEDS[pr.speed].ms); return; }
+  try { speechSynthesis.cancel(); } catch (e) {}
+  setTimeout(() => {
+    if (pr.token !== tk) return;
+    let u; try { u = new SpeechSynthesisUtterance(prClean(text)); } catch (e) { fin(PR_SPEEDS[pr.speed].ms); return; }
+    u.rate = PR_RATE[pr.speed]; u.pitch = 1.12; pr.utt = u;
+    u.onend = () => fin(PR_PAUSE[pr.speed]); u.onerror = () => fin(500);
+    try { speechSynthesis.speak(u); } catch (e) { fin(PR_SPEEDS[pr.speed].ms); return; }
+    /* safety net in case a browser never reports that speaking finished */
+    pr.guard = setTimeout(() => fin(300), 3000 + String(text).length * 130 / PR_RATE[pr.speed]);
+  }, 150);
+}
+function prStep() {
+  if (pr.done) return;
+  const it = pr.items[pr.i], quiz = !pr.worked && pr.hide && pr.phase === 0;
+  const text = pr.worked ? it.steps[pr.step].t : quiz ? it.sq + "?" : it.say;
+  if (!pr.worked && !quiz) bounceCard();
+  prUtter(text, () => { if (!pr.playing) return; if (!prAdvance()) return prFinish(); renderPrac(); prStep(); }, quiz ? 1600 : pr.worked ? 400 : 0);
+}
+function bounceCard() { const c = $("prCard"); c.classList.remove("pop"); void c.offsetWidth; c.classList.add("pop"); }
+function prAdvance() {
+  const it = pr.items[pr.i];
+  if (pr.worked) { if (pr.step < it.steps.length - 1) { pr.step++; return true; } pr.step = 0; }
+  else if (pr.hide && pr.phase === 0) { pr.phase = 1; return true; }
+  pr.phase = 0;
+  if (pr.i < pr.items.length - 1) { pr.i++; return true; }
+  return false;
+}
+function prPlay(fromStart) {
+  if (pr.done || fromStart === "restart") { pr.done = false; pr.i = 0; pr.step = 0; pr.phase = 0; }
+  pr.playing = true; renderPrac(); prStep();
+}
+function prStop() { if (!pr) return; clearTimeout(pr.auto); pr.playing = false; pr.token = (pr.token || 0) + 1; clearTimeout(pr.timer); clearTimeout(pr.guard); try { speechSynthesis.cancel(); } catch (e) {} if ($("prPlay")) $("prPlay").textContent = "▶"; }
+function prFinish() {
+  prStop(); pr.done = true; renderPrac(); sfx.win(); burst(80);
+  const key = `${cur.g}-${cur.lvl}`, done = store.get("practised", []);
+  let msg = `Great practising, ${profile.name}! Now try the test.`;
+  if (!done.includes(key)) { done.push(key); store.set("practised", done); stats.coins += 10; saveAll(); msg = `Great practising, ${profile.name}! You earned 10 coins. Now try the test.`; $("prTip").textContent = "🪙 +10 coins for practising! Tap 🎯 Start the test when you are ready."; }
+  prUtter(msg, null);
+}
+$("prPlay").onclick = () => { sfx.tap(); if (pr.playing) prStop(); else prPlay(pr.done ? "restart" : false); };
+$("prPrev").onclick = () => { sfx.tap(); prStop(); pr.done = false; if (pr.worked && pr.step > 0) pr.step--; else if (pr.i > 0) { pr.i--; pr.step = 0; } pr.phase = 0; renderPrac(); prStep(); };
+$("prNext").onclick = () => { sfx.tap(); prStop(); if (!prAdvance()) { pr.done = true; } renderPrac(); prStep(); };
+$("prHide").onclick = () => { sfx.tap(); pr.hide = !pr.hide; pr.phase = 0; renderPrac(); };
+$("prBack").onclick = () => { sfx.tap(); prStop(); openReady(); };
+$("prStart").onclick = () => { sfx.tap(); prStop(); startGame(); };
+$("rdPractice").onclick = () => { sfx.tap(); openPractice(); };
 
 /* ---------- several children on one device ---------- */
 function loadPlayer(id) {
