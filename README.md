@@ -36,7 +36,9 @@ Open <https://github.com/AROWOLO-ABIMBOLA/mathsgame/upload/main>, drag in the ne
 
 - **Install it like an app.** On Android (Chrome), tap **📲 Install app** on the home screen, or the browser menu **⋮ → Add to Home screen / Install app**. On iPhone or iPad (Safari), tap the **Share** button, then **Add to Home Screen**. The game then has its own icon and works even without internet.
 - **Please install it on iPhones and iPads.** Safari may clear website data if a site is not opened for 7 days. Games added to the Home Screen keep their progress.
-- **Several children on one device:** tap **👪** on the home screen to switch child or add a new one. Each child keeps their own stars, crowns, stickers, outfit and voice messages.
+- **Several children on one device:** tap **👪** on the home screen to switch child, add a new one, or **🚪 Log out**. Each child keeps their own stars, crowns, stickers, outfit and voice messages.
+- **Log in and log out:** when a child logs out, the game opens on **Who's playing?** next time, and the next child taps their own name to log in. Logging out never deletes anything.
+- **Removing a child:** open the **🔒 Parent corner** and use **Remove this child**. This deletes that child's progress on this device, so make a backup first if you may want it back.
 - **Moving to a new phone or keeping a safe copy:** open the **🔒 Parent corner → Settings → 💾 Save backup**. Send the file to the new device (for example by WhatsApp or email), then on the new device use **📂 Load backup**. Voice messages are not included in backups; record them again on the new device.
 - **Voice messages** need microphone permission the first time you record. They are stored only on that device.
 

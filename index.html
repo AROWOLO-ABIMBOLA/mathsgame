@@ -688,9 +688,9 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
   <!-- WHO'S PLAYING -->
   <section class="screen" id="s-players" aria-label="Who's playing?">
     <div class="topbar"><button class="btn iconbtn" id="plBack" aria-label="Back">◀</button><h2 class="t-l">Who's playing?</h2></div>
-    <p class="t-s" style="flex:none">Tap your name. Each child has their own stars, crowns, stickers and messages.</p>
+    <p class="t-s" style="flex:none" id="plHint">Tap your name to log in. Each child has their own stars, crowns, stickers and messages.</p>
     <div class="playergrid" id="playerGrid"></div>
-    <button class="btn go" id="addChild" style="flex:none">➕ Add a child</button>
+    <div class="row" style="flex:none"><button class="btn go" id="addChild" style="flex:1">➕ Add a child</button><button class="btn" id="logOut" style="flex:none">🚪 Log out</button></div>
   </section>
 
   <!-- HOME -->
@@ -699,7 +699,7 @@ canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-
       <span class="pill" title="Stars">⭐ <span id="starTotal">0</span></span>
       <span class="pill" title="Coins">🪙 <span id="coinTotal">0</span></span>
       <span class="spacer"></span>
-      <button class="btn iconbtn" id="kidsBtn" aria-label="Switch child">👪</button>
+      <button class="btn iconbtn" id="kidsBtn" aria-label="Switch child or log out" title="Switch child or log out">👪</button>
       <button class="btn iconbtn" id="soundBtn" aria-label="Sound on">🔊</button>
       <button class="btn iconbtn" id="parentBtn" aria-label="Parent corner">🔒</button>
     </div>
@@ -1210,7 +1210,7 @@ let CUR = null;
 const lsk = (k) => (GLOBAL_KEYS.includes(k) ? "nb." + k : `nb.${CUR}.${k}`);
 const store = {
   get(k, d) { try { const v = localStorage.getItem(lsk(k)); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
-  set(k, v) { try { localStorage.setItem(lsk(k), JSON.stringify(v)); } catch (e) {} },
+  set(k, v) { if (!CUR && !GLOBAL_KEYS.includes(k)) return; /* nobody logged in: save nothing per-child */ try { localStorage.setItem(lsk(k), JSON.stringify(v)); } catch (e) {} },
 };
 (function initPlayers() {
   let players = store.get("players", null);
@@ -1225,7 +1225,7 @@ const store = {
     store.set("players", players);
   }
   const c = store.get("current", null);
-  CUR = players.find((p) => p.id === c) ? c : players[0] ? players[0].id : null;
+  CUR = c === "out" ? null : players.find((p) => p.id === c) ? c : players[0] ? players[0].id : null; /* "out" = logged out */
 })();
 let profile = store.get("profile", null);
 let progress = store.get("progress", {});
@@ -1408,7 +1408,7 @@ function renderWelcome() {
 }
 $("nameIn").addEventListener("input", () => { draft.name = $("nameIn").value; $("welcomeHint").textContent = ""; });
 $("nameIn").addEventListener("keydown", (e) => { if (e.key === "Enter") $("wNext").click(); });
-$("wBack").onclick = () => { sfx.tap(); if (wstep) { wstep--; renderWelcome(); } else if (addingChild) { addingChild = false; show(profile ? "players" : "welcome"); } };
+$("wBack").onclick = () => { sfx.tap(); if (wstep) { wstep--; renderWelcome(); } else if (addingChild) { addingChild = false; show(profile || store.get("players", []).length ? "players" : "welcome"); } };
 $("wNext").onclick = () => {
   if (wstep === 0) {
     draft.name = $("nameIn").value.trim();
@@ -4524,7 +4524,8 @@ async function migrateVoice() {
 }
 function renderPlayers() {
   const PL = store.get("players", []);
-  $("plBack").style.visibility = profile ? "visible" : "hidden";
+  $("plBack").style.visibility = profile ? "visible" : "hidden"; $("logOut").hidden = !profile;
+  $("plHint").textContent = profile ? `${profile.name} is playing now. Tap another name to switch, or log out.` : "Tap your name to log in. Each child has their own stars, crowns, stickers and messages.";
   $("playerGrid").innerHTML = PL.map((p) => { let lg = 0; try { lg = JSON.parse(localStorage.getItem(`nb.${p.id}.legends`) || "[]").length; } catch (e) {}
     return `<button class="btn pcard ${p.id === CUR ? "me" : ""}" data-id="${p.id}"><img src="${charSrc(p.buddy)}" alt=""><b>${p.name || "?"}</b><small>${p.gender === "girl" ? "👧" : "👦"} Age ${p.age || "?"} · 👑 ${lg}</small></button>`; }).join("");
   $("playerGrid").querySelectorAll(".pcard").forEach((b) => b.onclick = () => { sfx.tap(); loadPlayer(b.dataset.id); say("Hi " + profile.name + "!"); show("home"); });
@@ -4554,6 +4555,9 @@ $("restoreFile").onchange = async () => {
   loadPlayer(id); sfx.win(); say(`Welcome back, ${profile.name}!`); show("home");
 };
 $("plBack").onclick = () => { sfx.tap(); if (profile) show("home"); };
+/* log out: nobody is playing until a child taps their name again; the next start opens Who's playing? */
+$("logOut").onclick = () => { sfx.tap(); if (typeof stopGame === "function") stopGame(); const nm = profile ? profile.name : "";
+  CUR = null; store.set("current", "out"); profile = null; document.body.classList.remove("royal"); show("players"); if (nm) say(`Bye bye, ${nm}! See you soon.`); };
 $("addChild").onclick = () => { sfx.tap(); draft = { name: "", age: 4, buddy: pick(Object.keys(FACES)), gender: "boy" }; addingChild = true; wstep = 0; renderWelcome(); show("welcome"); };
 $("removeChild").onclick = async () => {
   if (!confirm(`Remove ${profile.name} and all their stars, crowns and messages from this device?`)) return;
@@ -4565,7 +4569,7 @@ $("removeChild").onclick = async () => {
 };
 
 migrateMul(); migrateVoice();
-if (store.get("players", []).length > 1) show("players"); else if (profile) show("home"); else { renderWelcome(); show("welcome"); }
+{ const PLs = store.get("players", []); if (PLs.length && (!profile || PLs.length > 1)) show("players"); else if (profile) show("home"); else { renderWelcome(); show("welcome"); } }
 </script>
 <script>
 /* live website extras: offline play, keep progress safe, and an install button where the browser offers one */
